@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import io
-import openpyxl
 
 @st.cache_data
 def load_ticker_data(ticker_file):
