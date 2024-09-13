@@ -39,9 +39,10 @@ st.write("""
 Purpose: This page extracts the relevant holdings information from 13F (via Whale Wisdom exports) and outputs a text summary.
 
 Steps:
-1. Upload the tickers that you are interested in. The Excel file needs to include a column named 'Ticker'.
-2. Upload the Excel exports from Whale Wisdom.
+1. Upload the tickers that you are interested in. This first Excel file needs to include a column named 'Ticker' that has the tickers you want to filter for.
+2. Upload an unmodified Excel export from Whale Wisdom.
 3. Click 'Generate Summary' to process the data and view the results.
+4. To extract the summary for the next spreadsheet, click "X" and upload another Whalewisdom export.
 """)
 
 # Master ticker file upload
