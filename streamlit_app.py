@@ -34,7 +34,6 @@ def generate_holdings_summary(df_tickers, ww_file):
     return text_chunk
 
 st.title("Holdings Summary Generator")
-st.set_page_config(page_title="13F summary", page_icon=":whale:")
 st.write("""
 Purpose: This page extracts the relevant holdings information from 13F (via Whale Wisdom exports) and outputs a text summary.
 
