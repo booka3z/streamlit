@@ -17,8 +17,10 @@ def generate_holdings_summary(df_tickers, ww_file):
     # Convert 'Market Value' to integer
     df_merged['Market Value'] = df_merged['Market Value'].fillna(0).astype(int)
     
-    # Slice df_merged to show Ticker and Market Value
-    df_sliced = df_merged[['Ticker', 'Market Value']].dropna()
+    # Slice df_merged to show Ticker, Market Value, and Type
+    df_sliced = df_merged[['Ticker', 'Market Value', 'Type']]
+    # Only drop rows where Ticker or Market Value is NA, allow Type to be NA
+    df_sliced = df_sliced.dropna(subset=['Ticker', 'Market Value'])
 
     # Drop rows where Market Value is zero
     df_sliced = df_sliced[df_sliced['Market Value'] != 0]
@@ -27,7 +29,7 @@ def generate_holdings_summary(df_tickers, ww_file):
     df_sliced['Market Value'] = df_sliced['Market Value'].apply(lambda x: "{:,}".format(x))
     
     # Create a new column 'Text' that combines 'Ticker' and 'Market Value'
-    df_sliced['Text'] = df_sliced['Ticker'] + ' $' + df_sliced['Market Value']
+    df_sliced['Text'] = df_sliced['Ticker'] +' '+ df_sliced['Type'].fillna('') + ' $' + df_sliced['Market Value']
 
     # Join all elements in the 'Text' column into a single string, separated by newlines
     text_chunk = '\n'.join(df_sliced['Text'])
